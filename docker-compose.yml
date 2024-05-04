@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
     nginx:
-        image: nginx:latest
-        container_name: nginx
+        image: nginx:1.26
+        container_name: php-fpm-nginx
         ports:
             - '8080:80'
         volumes:
@@ -14,18 +14,21 @@ services:
 
     php-fpm:
         build: ./docker/php
-        container_name: php
+        container_name: php-fpm-php
         volumes:
             - ./:/var/www/html
 
     redis:
-        image: redis:latest
-        container_name: redis
+        image: redis:7.2
+        container_name: php-fpm-redis
         restart: always
         command: /bin/bash -c "redis-server --appendonly yes && echo never > /sys/kernel/mm/transparent_hugepage/enabled"
         volumes:
             - ./docker/redis:/data
         environment:
-            - REDIS_PASSWORD=${DB_PASSWORD}
             - REDIS_PORT=6379
             - REDIS_DATABASES=1
+
+networks:
+    default:
+        name: php-fpm

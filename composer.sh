@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec -it php sh -c "composer $@"
+sh exec.sh "composer $*"

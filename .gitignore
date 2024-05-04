@@ -8,5 +8,4 @@
 /vendor/
 ###< symfony/framework-bundle ###
 /docker/redis/
-/bin/
 /.idea/

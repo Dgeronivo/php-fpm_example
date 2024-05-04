@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec -it php sh -c "php bin/console cache:clear"
+sh exec.sh "php bin/console cache:clear"
