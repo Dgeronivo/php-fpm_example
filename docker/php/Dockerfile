@@ -1,14 +1,7 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.2-fpm
 
-RUN addgroup -g 1000 -S app && \
-    adduser -u 1000 -S app -G app
+RUN apt-get update;\
+    apt-get install -y \
+    zip
 
-RUN apk add \
-    autoconf \
-    build-base \
-    git
-
-RUN pecl install apcu-5.1.21
-RUN docker-php-ext-enable apcu opcache
-
-COPY --from=composer:2.1 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2.2 /usr/bin/composer /usr/local/bin/composer
