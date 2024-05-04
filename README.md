@@ -11,3 +11,5 @@ Set up debug:
 3. server: Settings > PHP > Servers
 4. xDebug: Settings > PHP > Debug > XDebug , mandatory enable external connections
 5. run configuration: Run > Edit configurations
+
+Original: https://habr.com/ru/articles/712670/
